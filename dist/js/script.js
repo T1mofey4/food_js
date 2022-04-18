@@ -1,3 +1,5 @@
+"use strict";
+
 document.addEventListener('DOMContentLoaded', () => {
     //tabs
     const tabs = document.querySelectorAll('.tabheader__item'),
@@ -178,15 +180,14 @@ document.addEventListener('DOMContentLoaded', () => {
            this.parent.append(element);
         }
     }
-
-    // new MenuCard(
-    //     "img/tabs/vegy.jpg",
-    //     "vegy",
-    //     'Меню "Фитнес"',
-    //    ' Меню "Фитнес" - это новый подход к приготовлению блюд: больше свежих овощей и    фруктов. Продукт активных и здоровых людей. Это абсолютно новый продукт с оптимальной ценой и высоким качеством!',
-    //    9,
-    //    '.menu .container'
-    // ).render();
+// new MenuCard(
+//     "img/tabs/vegy.jpg",
+//     "vegy",
+//     'Меню "Фитнес"',
+//    ' Меню "Фитнес" - это новый подход к приготовлению блюд: больше свежих овощей и фруктов. Продукт активных и здоровых людей. Это абсолютно новый продукт с оптимальной ценой и высоким качеством!',
+//    9,
+//    '.menu .container'
+// ).render();
     
         const forms = document.querySelectorAll('form');
 
@@ -220,6 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 request.addEventListener('load', () => {
                     if (request.status === 200){
+                        statusMessage.textContent = message.success;
                         console.log(request.response);
                     } else {
                         statusMessage.textContent = message.failure;
