@@ -395,7 +395,13 @@ document.addEventListener('DOMContentLoaded', () => {
         dots[slideIndex - 1].style.opacity = 1;
     }
 
-     
+    function changeCountOfSlides() {
+        if (slides.length < 10) {
+            current.textContent = `0${slideIndex}`;
+        } else {
+            current.textContent = slideIndex;
+        }
+    }
 
     next.addEventListener('click', () => {
         if (offset == +width.slice(0, width.length - 2) * (slides.length - 1)) {
@@ -411,11 +417,7 @@ document.addEventListener('DOMContentLoaded', () => {
             slideIndex++;
         }
 
-        if (slides.length < 10) {
-            current.textContent = `0${slideIndex}`;
-        } else {
-            current.textContent = slideIndex;
-        }
+        changeCountOfSlides();
 
         dotsMove();
     });
@@ -434,12 +436,8 @@ document.addEventListener('DOMContentLoaded', () => {
             slideIndex--;
         }
 
-        if (slides.length < 10) {
-            current.textContent = `0${slideIndex}`;
-        } else {
-            current.textContent = slideIndex;
-        }
-
+        changeCountOfSlides();
+        
         dotsMove();
     });
 
@@ -454,55 +452,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
           slidesField.style.transform = `translate(-${offset}px)`;
 
-          if (slides.length < 10) {
-            current.textContent = `0${slideIndex}`;
-          } else {
-            current.textContent = slideIndex;
-          }
+          changeCountOfSlides();
           
           dotsMove();        
         });
     });
-
-    // showSlides(slideIndex);
-
-    // if (slides.length < 10) {
-    //     total.textContent = `0${slides.length}`;
-    // } else {
-    //     total.textContent = slides.length;
-    // }
-
-    // function showSlides(n) {
-    //     if (n > slides.length) {
-    //         slideIndex = 1;
-    //     }
-
-    //     if (n < 1) {
-    //         slideIndex = slides.length;
-    //     }
-
-    //     slides.forEach(item => item.style.display = 'none');
-
-    //     slides[slideIndex - 1].style.display = 'block';
-
-    //     if (slides.length < 10) {
-    //         current.textContent = `0${slideIndex}`;
-    //     } else {
-    //         current.textContent = slideIndex;
-    //     }
-
-    // }
-
-    // function plusSlides(n) {
-    //     showSlides(slideIndex += n);
-    // }
-
-    // prev.addEventListener('click', () => {
-    //     plusSlides(-1);
-    // });
-
-    // next.addEventListener('click', () => {
-    //     plusSlides(1);
-    // });
-
 });
