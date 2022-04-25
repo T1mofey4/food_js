@@ -395,6 +395,8 @@ document.addEventListener('DOMContentLoaded', () => {
         dots[slideIndex - 1].style.opacity = 1;
     }
 
+    //изменение счетчика слайдов
+
     function changeCountOfSlides() {
         if (slides.length < 10) {
             current.textContent = `0${slideIndex}`;
@@ -404,10 +406,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     next.addEventListener('click', () => {
-        if (offset == +width.slice(0, width.length - 2) * (slides.length - 1)) {
+        if (offset == +width.replace(/\D/g, '') * (slides.length - 1)) {
             offset = 0;
         } else {
-            offset += +width.slice(0, width.length - 2);
+            offset += +width.replace(/\D/g, '');
         }
         slidesField.style.transform = `translate(-${offset}px)`;
 
@@ -424,9 +426,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     prev.addEventListener('click', () => {
         if (offset == 0) {
-            offset = +width.slice(0, width.length - 2) * (slides.length - 1);
+            offset = +width.replace(/\D/g, '') * (slides.length - 1);
         } else {
-            offset -= +width.slice(0, width.length - 2);
+            offset -= +width.replace(/\D/g, '');
         }
         slidesField.style.transform = `translate(-${offset}px)`;
         
